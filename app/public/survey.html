@@ -230,7 +230,7 @@
 
 					</div>
 
-					<button class="btn btn-lg disabled" id="answerSubmit">Submit!</button>
+					<button class="btn btn-block btn-primary hidden" id="answerSubmit">Submit!</button>
 
 				</form> <!-- close form -->
 			</div> <!-- close questions column -->
@@ -281,7 +281,7 @@
 
 	$("input").on("click", function() {
 		if ($("#q0").children("label").children("input").is(":checked") && $("#q1").children("label").children("input").is(":checked") && $("#q2").children("label").children("input").is(":checked") && $("#q3").children("label").children("input").is(":checked") && $("#q4").children("label").children("input").is(":checked") && $("#q5").children("label").children("input").is(":checked") && $("#q6").children("label").children("input").is(":checked") && $("#q7").children("label").children("input").is(":checked") && $("#q8").children("label").children("input").is(":checked") && $("#q9").children("label").children("input").is(":checked")) {
-			$("#answerSubmit").removeClass("disabled");
+			$("#answerSubmit").removeClass("hidden");
 		}
 	});
 
