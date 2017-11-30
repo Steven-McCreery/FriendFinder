@@ -3,8 +3,188 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Survey Page!</title>
+
+	<!-- linking bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- linking to jQuery CDN and Bootstrap's js -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
-	<h1>Time for surveying!</h1>
+	
+	<!-- header content -->
+	<div class="jumbotron text-center">
+		<h1>Time for surveying!</h1>
+		<h3>When ready please select your responses on a scale of 1 (strongly disagree) to 5 (strongly agree). <br><br>Once completed, please submit your responses to view your friend match!</h3>
+	</div>
+
+	<!-- main content -->
+	<div class="container text-center">
+		
+		<div class="row">
+			<div class="column col-xs-12 well">
+				<button class="btn btn-lg btn-primary">Begin Survey!</button>
+			</div>
+		</div>
+
+		<div class="row" id="questions">
+			<div class="column col-xs-12">
+				<form>
+					<div class="form-group">
+						<label class="pull-left" for="q0">I like .</label>
+						<select class="custom-select pull-right" id="q0">
+							<option selected>Choose...</option>
+							<option value="1">1 (Strongly Disagree)</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5 (Strongly Agree)</option>
+						</select><br><hr><br>
+
+						<label class="pull-left" for="q1">I like .</label>
+						<select class="custom-select" id="q1">
+							<option selected>Choose...</option>
+							<option value="1">1 (Strongly Disagree)</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5 (Strongly Agree)</option>
+						</select><br><hr><br>
+
+						<label for="q2">I like .</label>
+						<select class="custom-select pull-right" id="q2">
+							<option selected>Choose...</option>
+							<option value="1">1 (Strongly Disagree)</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5 (Strongly Agree)</option>
+						</select><br><hr><br>
+
+						<label for="q3">I like .</label>
+						<select class="custom-select" id="q3">
+							<option selected>Choose...</option>
+							<option value="1">1 (Strongly Disagree)</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5 (Strongly Agree)</option>
+						</select><br><hr><br>
+
+						<label  class="pull-left" for="q4">I like .</label>
+						<select class="custom-select pull-left" id="q4">
+							<option selected>Choose...</option>
+							<option value="1">1 (Strongly Disagree)</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5 (Strongly Agree)</option>
+						</select><br><hr><br>
+
+						<label for="q5">I like .</label>
+						<select class="custom-select" id="q5">
+							<option selected>Choose...</option>
+							<option value="1">1 (Strongly Disagree)</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5 (Strongly Agree)</option>
+						</select><br><hr><br>
+
+						<label for="q6">I like .</label>
+						<select class="custom-select" id="q6">
+							<option selected>Choose...</option>
+							<option value="1">1 (Strongly Disagree)</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5 (Strongly Agree)</option>
+						</select><br><hr><br>
+
+						<label for="q7">I like .</label>
+						<select class="custom-select" id="q7">
+							<option selected>Choose...</option>
+							<option value="1">1 (Strongly Disagree)</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5 (Strongly Agree)</option>
+						</select><br><hr><br>
+
+						<label for="q8">I like .</label>
+						<select class="custom-select" id="q8">
+							<option selected>Choose...</option>
+							<option value="1">1 (Strongly Disagree)</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5 (Strongly Agree)</option>
+						</select><br><hr><br>
+
+						<label for="q9">I like .</label>
+						<select class="custom-select" id="q9">
+							<option selected>Choose...</option>
+							<option value="1">1 (Strongly Disagree)</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5 (Strongly Agree)</option>
+						</select><br><hr><br>
+
+					</div>
+
+					<button class="btn btn-lg disabled" id="answerSubmit">Submit!</button>
+
+				</form> <!-- close form -->
+			</div> <!-- close questions column -->
+		</div> <!-- close questions row -->
+	</div> <!-- close content container -->
+
+	<!-- modal content -->
+	<div class="container text-center">
+		<div id="viewSelect" class="modal fade" data-keyboard="false" data-backdrop="static">
+			<div class="modal-dialog modal-lg">
+
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<h4 class="modal-title">Please view your friend match below!</h4>
+					</div>
+
+					<div class="modal-body">
+
+						<div class="panel panel-success">
+
+							<div class="panel-heading">
+								<h2 class="panel-title">Friend Match:</h2>
+							</div> <!-- closes panel heading -->
+
+							<div class="panel-body" id="pb1">								
+								<h4>Results Placeholder</h4>
+							</div> <!-- close panel body -->
+
+						</div> <!-- close admin panel -->
+
+					</div>
+
+				</div> <!-- closes modal content -->
+			</div> <!-- closes modal dialog -->
+		</div> <!-- closes modal -->
+	</div> <!-- closes container for modal -->
+
+
+
 </body>
+
+<script type="text/javascript">
+	
+	if ($("#q0").is(":checked") && $("#q1").is(":checked") && $("#q2").is(":checked") && $("#q3").is(":checked") && $("#q4").is(":checked") && $("#q5").is(":checked") && $("#q6").is(":checked") && $("#q7").is(":checked") && $("#q8").is(":checked") && $("#q9").is(":checked")) {
+		$("#answerSubmit").removeClass("disabled");
+	}
+</script>
+
 </html>
