@@ -284,6 +284,21 @@
 
 <script type="text/javascript">
 
+	var friendsDataArray;
+
+	$.ajax({
+		url: "/api/friends",
+		method: "GET"
+	}).done(function(friendArray) {
+		console.log(friendArray);
+		friendsDataArray = friendArray;
+	})
+
+	// modal button functionality
+	$("a").on("click", function() {
+		$("#viewSelect").modal("hide");
+	})
+
 	// submit button functionality
 	$("#answerSubmit").on("click", function() {
 		
@@ -291,7 +306,9 @@
 
 		var userAnswerArray = [];
 
-		$("#questions input:checked").each(function(i,answer){userAnswerArray.push($(answer).val())})
+		$("#questions input:checked").each(function(i, answer){
+			userAnswerArray.push($(answer).val())
+		})
 
 		$("#viewSelect").modal("show");
 
@@ -304,9 +321,35 @@
 
 		var responseCheck = $("#questions input:checked");
 
-		if (responseCheck.length > 9) {$("#answerSubmit").removeClass("hidden");}
+		if (responseCheck.length > 9) {
+			$("#answerSubmit").removeClass("hidden");
+		}
 
 	});
+
+	checkFriends = function() {
+
+		var allFriendsTotals = [];
+
+		for (var i = 0; i < friendsDataArray.length; i++) {
+
+			var currentFriendAbs = []
+
+			for (var j = 0; j < friendsDataArray[i].scores.length; j++) {
+		    	currentFriendAbs.push(Math.abs(friendsDataArray[i].scores[j] - array[j]));
+			}
+
+			var currentFriendTotal = currentFriendAbs.reduce(add, 0);
+
+			function add(a, b) {
+		    	return a + b;
+			}
+
+			allFriendsTotals.push(currentFriendTotal);
+
+			currentFriendAbs = [];
+		}
+	}
 
 	
 
