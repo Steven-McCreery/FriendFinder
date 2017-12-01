@@ -21,7 +21,7 @@ require("./app/routing/htmlRoutes")(app);
 
 
 
-
+// *****location.reload();*****
 
 
 

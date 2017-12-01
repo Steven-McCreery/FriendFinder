@@ -230,12 +230,15 @@
 
 					</div>
 
-					<button class="btn btn-block btn-primary hidden" id="answerSubmit">Submit!</button>
+					<div class="well hidden" id="answerSubmit">
+						<button class="btn btn-block btn-primary">Submit!</button>
+					</div>
 
 				</form> <!-- close form -->
 			</div> <!-- close questions column -->
 		</div> <!-- close questions row -->
 	</div> <!-- close content container -->
+	<br><br><br><br><br><br><br>
 
 	<!-- modal content -->
 	<div class="container text-center">
@@ -260,7 +263,13 @@
 								<h4>Results Placeholder</h4>
 							</div> <!-- close panel body -->
 
-						</div> <!-- close admin panel -->
+						</div> <!-- close panel -->
+					
+						<!-- buttons to direct the user after results -->
+						<ul class="nav nav-pills nav-justified">
+							<li class=""><a href="#" id="mainPage">Return to Main Page</a></li>
+							<li class=""><a href="#" id="surveyPage">Retake Survey</a></li>
+						</ul>
 
 					</div>
 
@@ -275,14 +284,28 @@
 
 <script type="text/javascript">
 
+	// submit button functionality
 	$("#answerSubmit").on("click", function() {
-		event.preventDefault()
+		
+		event.preventDefault();
+
+		var userAnswerArray = [];
+
+		$("#questions input:checked").each(function(i,answer){userAnswerArray.push($(answer).val())})
+
+		$("#viewSelect").modal("show");
+
+		$("input").prop("checked", false);
+
 	})
 
+	// shows the submit button/well styling when all questions have user input
 	$("input").on("click", function() {
-		if ($("#q0").children("label").children("input").is(":checked") && $("#q1").children("label").children("input").is(":checked") && $("#q2").children("label").children("input").is(":checked") && $("#q3").children("label").children("input").is(":checked") && $("#q4").children("label").children("input").is(":checked") && $("#q5").children("label").children("input").is(":checked") && $("#q6").children("label").children("input").is(":checked") && $("#q7").children("label").children("input").is(":checked") && $("#q8").children("label").children("input").is(":checked") && $("#q9").children("label").children("input").is(":checked")) {
-			$("#answerSubmit").removeClass("hidden");
-		}
+
+		var responseCheck = $("#questions input:checked");
+
+		if (responseCheck.length > 9) {$("#answerSubmit").removeClass("hidden");}
+
 	});
 
 	
