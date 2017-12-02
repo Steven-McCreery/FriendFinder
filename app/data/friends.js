@@ -3,7 +3,7 @@
 var friendArray = [
 	{
 		name: "Greg",
-		photo: "url",
+		photo: "https://media3.giphy.com/media/10SP1jx1qnt8bK/200.gif?cid=e1bb72ff5a22263e4e4239634d107cc6",
 		scores: [
 			1,
 			1,
@@ -19,7 +19,7 @@ var friendArray = [
 	},
 	{
 		name: "Sue",
-		photo: "url",
+		photo: "https://media3.giphy.com/media/c2t9ffmJNNBXW/200.gif?cid=e1bb72ff5a222676647449352e892c56",
 		scores: [
 			2,
 			2,
@@ -35,7 +35,7 @@ var friendArray = [
 	},
 	{
 		name: "Bob",
-		photo: "url",
+		photo: "https://media1.giphy.com/media/84BrW8MKGJ3Py/200.gif?cid=e1bb72ff5a222700652e5946630b5b59",
 		scores: [
 			3,
 			3,
@@ -51,7 +51,7 @@ var friendArray = [
 	},
 	{
 		name: "Jane",
-		photo: "url",
+		photo: "https://media0.giphy.com/media/3o7aD4maI4tAyZM7GE/200_s.gif?cid=e1bb72ff5a2227475751787667469592",
 		scores: [
 			4,
 			4,
@@ -67,7 +67,7 @@ var friendArray = [
 	},
 	{
 		name: "Igor",
-		photo: "url",
+		photo: "https://media0.giphy.com/media/SoV9BYlgYicGQ/200.gif?cid=e1bb72ff5a2227b045495264416b6e44",
 		scores: [
 			5,
 			5,
