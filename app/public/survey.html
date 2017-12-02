@@ -13,6 +13,16 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<style type="text/css">
+		body {
+			background-color: lightgreen;
+		}
+
+		#formDiv {
+			background-color: lightblue;
+		}
+	</style>
+
 </head>
 <body>
 	
@@ -27,15 +37,27 @@
 		
 		<div class="row">
 			<div class="column col-xs-12 well">
-				<button class="btn btn-lg btn-primary">Begin Survey!</button>
+				
+				<div class="form-group text-left">
+					<label for="userName"><h3>Name:</h3></label>
+					<input type="text" class="form-control" id="userName">
+				</div>
+
+				<div class="form-group text-left">
+					<label for="userPhoto"><h3>URL Link to Your Picture:</h3></label>
+					<input type="text" class="form-control" id="userPhoto">
+				</div><hr><br>
+
+				<button class="btn btn-lg btn-primary" id="beginSurvey">Begin Survey!</button>
 			</div>
 		</div>
 
 		<div class="row" id="questions">
-			<div class="column col-xs-12">
+			<div class="column col-xs-12 hidden" id="formDiv">
 				<form>
-					<div class="form-group">
-						<label class="pull-left" for="q0">I like .</label>
+
+					<div class="form-group"><hr><br>
+						<label for="q0">I like to be a leader.</label>
 						<div class="radio" id="q0">
 							<label>
 								<input type="radio" value="1" id="q0v1" name="optradio0">1 (Strongly Disagree)
@@ -56,7 +78,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="q1">I like .</label>
+						<label for="q1">I like being outdoors.</label>
 						<div class="radio" id="q1">
 							<label>
 								<input type="radio" value="1" id="q1v1" name="optradio1">1 (Strongly Disagree)
@@ -76,7 +98,7 @@
 						</div><hr><br>
 					</div>
 
-						<label for="q2">I like .</label>
+						<label for="q2">I like to be alone or in small groups.</label>
 						<div class="radio" id="q2">
 							<label>
 								<input type="radio" value="1" id="q2v1" name="optradio2">1 (Strongly Disagree)
@@ -95,7 +117,7 @@
 							</label>
 						</div><hr><br>
 
-						<label for="q3">I like .</label>
+						<label for="q3">I like to read in quiet.</label>
 						<div class="radio" id="q3">
 							<label>
 								<input type="radio" value="1" id="q3v1" name="optradio3">1 (Strongly Disagree)
@@ -114,7 +136,7 @@
 							</label>
 						</div><hr><br>
 
-						<label for="q4">I like .</label>
+						<label for="q4">I like consuming digital entertainment.</label>
 						<div class="radio" id="q4">
 							<label>
 								<input type="radio" value="1" id="q4v1" name="optradio4">1 (Strongly Disagree)
@@ -133,7 +155,7 @@
 							</label>
 						</div><hr><br>
 
-						<label for="q5">I like .</label>
+						<label for="q5">I like it when the future is unknown.</label>
 						<div class="radio" id="q5">
 							<label>
 								<input type="radio" value="1" id="q5v1" name="optradio5">1 (Strongly Disagree)
@@ -152,7 +174,7 @@
 							</label>
 						</div><hr><br>
 
-						<label for="q6">I like .</label>
+						<label for="q6">I like adventureous activities.</label>
 						<div class="radio" id="q6">
 							<label>
 								<input type="radio" value="1" id="q6v1" name="optradio6">1 (Strongly Disagree)
@@ -171,7 +193,7 @@
 							</label>
 						</div><hr><br>
 
-						<label for="q7">I like .</label>
+						<label for="q7">I like to try new foods.</label>
 						<div class="radio" id="q7">
 							<label>
 								<input type="radio" value="1" id="q7v1" name="optradio7">1 (Strongly Disagree)
@@ -190,7 +212,7 @@
 							</label>
 						</div><hr><br>
 
-						<label for="q8">I like .</label>
+						<label for="q8">I like having a routine.</label>
 						<div class="radio" id="q8">
 							<label>
 								<input type="radio" value="1" id="q8v1" name="optradio8">1 (Strongly Disagree)
@@ -209,7 +231,7 @@
 							</label>
 						</div><hr><br>
 
-						<label for="q9">I like .</label>
+						<label for="q9">I like having pets.</label>
 						<div class="radio" id="q9">
 							<label>
 								<input type="radio" value="1" id="q9v1" name="optradio9">1 (Strongly Disagree)
@@ -242,7 +264,7 @@
 
 	<!-- modal content -->
 	<div class="container text-center">
-		<div id="viewSelect" class="modal fade" data-keyboard="false" data-backdrop="static">
+		<div id="friendMatchModal" class="modal fade" data-keyboard="false" data-backdrop="static">
 			<div class="modal-dialog modal-lg">
 
 				<div class="modal-content">
@@ -267,8 +289,8 @@
 					
 						<!-- buttons to direct the user after results -->
 						<ul class="nav nav-pills nav-justified">
-							<li class=""><a href="#" id="mainPage">Return to Main Page</a></li>
-							<li class=""><a href="#" id="surveyPage">Retake Survey</a></li>
+							<li class=""><a href="/home" id="mainPage">Return to Main Page</a></li>
+							<li class=""><a href="/survey" id="surveyPage">Retake Survey</a></li>
 						</ul>
 
 					</div>
@@ -284,8 +306,18 @@
 
 <script type="text/javascript">
 
+	// variable declarations
 	var friendsDataArray;
 
+	var userAnswerArray = [];
+
+	var allFriendsTotals = [];
+
+	var foundFriend;
+
+	var image;
+
+	// getting the friends data and storing it for use later
 	$.ajax({
 		url: "/api/friends",
 		method: "GET"
@@ -294,9 +326,18 @@
 		friendsDataArray = friendArray;
 	})
 
-	// modal button functionality
-	$("a").on("click", function() {
-		$("#viewSelect").modal("hide");
+	$("#beginSurvey").on("click", function() {
+
+		event.preventDefault();
+
+		// ensuring that the name and photo fileds are not empty
+		if ($("#userName").val() == "") {
+			return;
+		} else if ($("#userPhoto").val() == "") {
+			return;
+		} else {
+			$("#formDiv").removeClass("hidden");
+		}
 	})
 
 	// submit button functionality
@@ -304,14 +345,35 @@
 		
 		event.preventDefault();
 
-		var userAnswerArray = [];
-
+		// storing the value of each radio button's for later evaluation
 		$("#questions input:checked").each(function(i, answer){
 			userAnswerArray.push($(answer).val())
 		})
 
-		$("#viewSelect").modal("show");
+		// checking the user's responses against the friends' data
+		checkFriends();
 
+		// posting the user's responses into the friends api path
+		$.post("/api/friends",
+			{
+				name: $("#userName").val().trim(),
+				photo: $("#userPhoto").val().trim(),
+				scores: userAnswerArray,
+			}
+		);
+
+		// bringing up the modal and adding the matched friend's data inside the modal
+		$("#friendMatchModal").modal("show");
+
+		foundFriend = allFriendsTotals.indexOf(Math.min.apply(Math, allFriendsTotals));
+
+		image = $("<img>").attr("src", friendsDataArray[foundFriend].photo);
+
+		$("#pb1").append("<h1>" + friendsDataArray[foundFriend].name + "</h1><br>");
+
+		$("#pb1").append(image);
+
+		// removing the checks from the radio buttons
 		$("input").prop("checked", false);
 
 	})
@@ -325,26 +387,32 @@
 			$("#answerSubmit").removeClass("hidden");
 		}
 
+
 	});
 
+	// function that evaluates the user's answers against the stored friends' data
 	checkFriends = function() {
 
-		var allFriendsTotals = [];
+		allFriendsTotals = [];
 
+		// initial loop through friends
 		for (var i = 0; i < friendsDataArray.length; i++) {
 
 			var currentFriendAbs = []
 
+			// looping the scores, once inside each friend
 			for (var j = 0; j < friendsDataArray[i].scores.length; j++) {
-		    	currentFriendAbs.push(Math.abs(friendsDataArray[i].scores[j] - array[j]));
+		    	currentFriendAbs.push(Math.abs(friendsDataArray[i].scores[j] - userAnswerArray[j]));
 			}
 
+			// adding up the absolute value differences
 			var currentFriendTotal = currentFriendAbs.reduce(add, 0);
 
 			function add(a, b) {
 		    	return a + b;
 			}
 
+			// pushing normalized data into the total's array
 			allFriendsTotals.push(currentFriendTotal);
 
 			currentFriendAbs = [];
